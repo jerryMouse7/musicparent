@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liu.clouddisk.mapper.UserSignCountMapper">
+    <resultMap id="BaseResultMap" type="com.liu.clouddisk.entity.UserSignCount">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="last_sign" jdbcType="TIME" property="lastSign"/>
+        <result column="sign_count" jdbcType="INTEGER" property="signCount"/>
+    </resultMap>
+
+    <insert id="initUserSignCount">
+        insert into t_user_sign_count (user_id,last_sign,sign_count) values
+        (#{userSignCount.userId},#{userSignCount.lastSign},#{userSignCount.signCount})
+    </insert>
+
+    <select id="selectByUserId">
+        select t_t_user_sign_count where user_id = #{userId}
+    </select>
+</mapper>

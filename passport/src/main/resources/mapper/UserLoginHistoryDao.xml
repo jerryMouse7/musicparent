@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liu.passport.dao.UserLoginHistoryDao">
+
+    <resultMap id="BaseResultMap" type="com.liu.passport.entity.UserLoginHistory">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="user_agent" jdbcType="VARCHAR" property="userAgent" />
+        <result column="remote_addr" jdbcType="VARCHAR" property="remoteAddr" />
+        <result column="cookies" jdbcType="VARCHAR" property="cookies" />
+        <result column="login_time" jdbcType="TIME" property="loginTime"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="created_by" jdbcType="BIGINT" property="createdBy"/>
+        <result column="created_date" jdbcType="TIME" property="createdDate"/>
+        <result column="updated_by" jdbcType="BIGINT" property="updatedBy"/>
+        <result column="updated_date" jdbcType="TIME" property="updatedDate"/>
+
+    </resultMap>
+
+    <insert id="insertUserLoginHistory">
+        insert into t_user_login_history (user_id,user_agent,remote_addr,cookies,
+                                login_time,state,created_by,created_date,updated_by,updated_date)
+            values (#{userLoginHistory.userId},#{userLoginHistory.userAgent},#{userLoginHistory.remoteAddr},
+                    #{userLoginHistory.cookies},#{userLoginHistory.loginTime},#{userLoginHistory.state},
+                    #{userLoginHistory.createdBy},#{userLoginHistory.createdDate},#{userLoginHistory.updatedBy},
+                    #{userLoginHistory.updatedDate})
+    </insert>
+</mapper>

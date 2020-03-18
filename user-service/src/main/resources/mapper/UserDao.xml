@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liu.userservice.dao.UserDao">
+
+    <resultMap id="BaseResultMap" type="com.liu.userservice.entity.User">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="account_name" jdbcType="VARCHAR" property="accountName"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="created_by" jdbcType="BIGINT" property="createdBy"/>
+        <result column="created_date" jdbcType="TIME" property="createdDate"/>
+        <result column="updated_by" jdbcType="BIGINT" property="updatedBy"/>
+        <result column="updated_date" jdbcType="TIME" property="updatedDate"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="signature" jdbcType="VARCHAR" property="signature"/>
+        <result column="birthday" jdbcType="TIME" property="birthday"/>
+        <result column="location" jdbcType="VARCHAR" property="location"/>
+        <result column="university" jdbcType="VARCHAR" property="university"/>
+        <result column="self_introduction" jdbcType="VARCHAR" property="selfIntroduction"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+    </resultMap>
+
+    <select id="selectUserByIds" resultType="com.liu.userservice.entity.User">
+        select * from t_user where  id in
+        <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+</mapper>

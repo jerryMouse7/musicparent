@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liu.song.mapper.AlbumMapper">
+    <resultMap id="BaseResultMap" type="com.liu.song.entity.Album">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="singer_id" jdbcType="BIGINT" property="singerId" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="create_time" jdbcType="TIME" property="createTime" />
+        <result column="background_picture" jdbcType="VARCHAR" property="backgroundPicture" />
+        <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+        <result column="state" jdbcType="INTEGER" property="state" />
+    </resultMap>
+
+    <insert id="insertAlbum">
+        insert into t_album (singer_id,name,create_time,background_picture,introduction,state,price)
+         values (#{ablum.singerId},#{ablum.name},#{album.createTime},#{album.backgroundPicture},
+                #{album.introduction},#{album.state},#{album.price})
+    </insert>
+
+</mapper>

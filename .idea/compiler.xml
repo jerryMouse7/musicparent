@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config" />
+        <module name="search" />
+        <module name="cloud-disk" />
+        <module name="admin" />
+        <module name="gateway" />
+        <module name="utils" />
+        <module name="song" />
+        <module name="user-service" />
+        <module name="pay" />
+        <module name="message" />
+        <module name="mall" />
+        <module name="gateway (1)" />
+        <module name="eureka-server" />
+        <module name="passport" />
+        <module name="store" />
+        <module name="common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="gateway (1)" target="1.8" />
+      <module name="im" target="1.8" />
+      <module name="im-common" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin" options="-parameters" />
+      <module name="cloud-disk" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="config" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="gateway (1)" options="-parameters" />
+      <module name="im" options="-parameters" />
+      <module name="im-common" options="-parameters" />
+      <module name="mall" options="-parameters" />
+      <module name="message" options="-parameters" />
+      <module name="passport" options="-parameters" />
+      <module name="pay" options="-parameters" />
+      <module name="search" options="-parameters" />
+      <module name="song" options="-parameters" />
+      <module name="store" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+      <module name="utils" options="" />
+    </option>
+  </component>
+</project>

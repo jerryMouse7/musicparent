@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liu.song.mapper.SongMapper">
+    <resultMap id="BaseResultMap" type="com.liu.song.entity.Song">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="singer_id" jdbcType="BIGINT" property="singerId" />
+        <result column="album_id" jdbcType="BIGINT" property="albumId" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="state" jdbcType="INTEGER" property="state" />
+        <result column="background_picture" jdbcType="VARCHAR" property="backgroundPicture" />
+        <result column="create_time" jdbcType="TIME" property="createTime" />
+        <result column="lyric" jdbcType="VARCHAR" property="lyric" />
+        <result column="path" jdbcType="VARCHAR" property="path" />
+    </resultMap>
+
+    <insert id="insertSong">
+        insert into t_song (singer_id,album_id,state,name,background_picture,create_time,lyric) values
+        (#{song.singerId},#{song.albumId},"1",#{song.name},#{song.backgroundPicture},#{song.createTime},#{song.lyric})
+        <selectKey resultType="java.lang.Integer" keyProperty="id" >
+            SELECT @@IDENTITY AS ID
+        </selectKey>
+    </insert>
+
+    <select id="getSongNameById" resultType="java.lang.String">
+        select name from t_song where id = #{id}
+    </select>
+    
+    <select id="getSongNameByIds" resultType="java.lang.String">
+        select name from t_song where id in
+        <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

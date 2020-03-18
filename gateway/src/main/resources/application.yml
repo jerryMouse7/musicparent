@@ -1,0 +1,35 @@
+server:
+  port: 8061
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    lease-expiration-duration-in-seconds: 100
+    lease-renewal-interval-in-seconds: 100
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://liu:123456@127.0.0.1:8071/eureka
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  redis:
+    database: 0
+    host: 49.235.221.50
+    port: 6379
+    password: liubenwei
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 1
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

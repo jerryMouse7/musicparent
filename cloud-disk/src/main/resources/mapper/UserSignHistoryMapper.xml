@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liu.clouddisk.mapper.UserSignHistoryMapper">
+    <resultMap id="BaseResultMap" type="com.liu.clouddisk.entity.UserSignHistory">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="sign_month" jdbcType="TIME" property="signMonth"/>
+        <result column="sign_record" jdbcType="TIME" property="signRecord"/>
+    </resultMap>
+
+    <insert id="initSignHistory">
+         insert into t_user_sign_count (user_id) values
+        (#{userSignCount.userId})
+    </insert>
+
+
+
+</mapper>

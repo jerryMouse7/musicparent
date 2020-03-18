@@ -1,0 +1,58 @@
+server:
+  port: 8085
+spring:
+  servlet:
+    multipart:
+      max-request-size: 10000MB
+      max-file-size: 10000MB
+#  mvc:
+#    view:
+#      prefix: /templates/
+#      suffix: .ftl
+#    static-path-pattern: /static/**
+  redis:
+    database: 0
+    host: 49.235.221.50
+    port: 6379
+    password: liubenwei
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 1
+  datasource:
+    url: jdbc:mysql://localhost:3306/account?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: liubenwei01
+  application:
+    name: cloud-disk
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    lease-expiration-duration-in-seconds: 100
+    lease-renewal-interval-in-seconds: 100
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://liu:123456@127.0.0.1:8071/eureka
+mybatis:
+  type-aliases-package: com.liu.userservice.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    com.liu.userservice: debug
+security:
+  oauth2:
+    client:
+      client-id: account1
+      client-secret: secret
+      authorized-grant-types: password
+      scope: write
+      id: account
+    resource:
+      user-info-uri: http://localhost:8081/oauth/info
+      prefer-token-info: false

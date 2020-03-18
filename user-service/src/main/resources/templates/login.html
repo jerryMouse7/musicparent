@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>hello world</title>
+</head>
+<body>
+<form class="form-signin" role="form" th:action="@{/user/login}" th:method="post">
+    <input type="text" class="form-control" placeholder="用户名" required="required" name="userName" />
+    <input type="password" class="form-control" placeholder="密码" required="required" name="password" />
+    <button class="btn btn-lg btn-warning btn-block" type="submit">登录</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liu.clouddisk.mapper.CapacityMapper">
+
+    <resultMap id="BaseResultMap" type="com.liu.clouddisk.entity.Capacity">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="total_capacioty" jdbcType="BIGINT" property="totalCapacity"/>
+        <result column="used_capacioty" jdbcType="BIGINT" property="usedCapacity"/>
+        <result column="temp_capacioty" jdbcType="BIGINT" property="tempCapacity"/>
+        <result column="expire_date" jdbcType="TIME" property="expireDate"/>
+
+    </resultMap>
+
+    <insert id="initCapacity">
+        insert into disk_capacity (user_id,total_capacity,used_capacity)
+        values (#{capacity.userId},#{capacity.totalCapacity},#{capacity.usedCapacity})
+    </insert>
+
+    <update id="addCapacity">
+        update disk_capacity set total_capacity = total_capacity + #{size} where user_id = #{userId}
+    </update>
+
+    <update id="addTempCapacity">
+        update disk_capacity set temp_capacity = #{capacity.temp}
+    </update>
+
+    <select id="getCapacityByUserId" resultMap="BaseResultMap">
+        selct * from disk_capacity where user_id = #{userId}
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,48 @@
+
+spring:
+  security:
+    user:
+      name: liu
+      password: 123456
+  application:
+    name: admin
+  mail:
+    host: smtp.qq.com
+    username: 2544853876@qq.com
+    password: dpnsginyuzjaecea
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  boot:
+    admin:
+      notify:
+        mail:
+          to: 1581933968@qq.com
+          from: 2544853876@qq.com
+server:
+  port: 8091
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    lease-expiration-duration-in-seconds: 100
+    lease-renewal-interval-in-seconds: 100
+    metadata-map:
+      user:
+        name: liu
+        password: 123456
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://liu:123456@127.0.0.1:8071/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

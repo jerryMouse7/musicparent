@@ -1,0 +1,25 @@
+app:
+  id: app
+apollo:
+  meta: http://127.0.0.1:8051
+  boostrap:
+    enabled: true
+    eagerLoad:
+      enabled: true
+    namespace: application
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    lease-expiration-duration-in-seconds: 100
+    lease-renewal-interval-in-seconds: 100
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://liu:123456@127.0.0.1:8071/eureka
+spring:
+  application:
+    name: config
+server:
+  port: 8050

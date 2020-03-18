@@ -1,0 +1,22 @@
+server:
+  port: 8071
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: liu
+      password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://liu:123456@127.0.0.1:8071/eureka
+#    不去检索服务
+    fetch-registry: false
+#    不向注册中心注册自己
+    register-with-eureka: false
+  server:
+#    关闭自我保护
+    enable-self-preservation: false
+
+    eviction-interval-timer-in-ms: 5000

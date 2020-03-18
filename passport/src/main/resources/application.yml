@@ -1,0 +1,53 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: passport
+  redis:
+    database: 0
+    host: 49.235.221.50
+    port: 6379
+    password: liubenwei
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 1
+  datasource:
+    url: jdbc:mysql://localhost:3306/account?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: liubenwei01
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    lease-expiration-duration-in-seconds: 100
+    lease-renewal-interval-in-seconds: 100
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://liu:123456@127.0.0.1:8071/eureka
+mybatis:
+  type-aliases-package: com.liu.passport.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:mapper/*.xml
+logging:
+  level:
+    com.liu.passprt.dao: debug
+ribbon:
+  eager-load:
+    enabled: true
+security:
+  oauth2:
+    client:
+      client-secret: 965825256e0bb70016a33e68a707528846cb5ce8
+      client-id: 87ceddd7c837811b428c
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://api.github.com/user
+    sso:
+      login-path: /github_login

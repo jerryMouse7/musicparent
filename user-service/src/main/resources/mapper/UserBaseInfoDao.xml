@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liu.userservice.dao.UserBaseInfoDao">
+    <resultMap id="BaseResultMap" type="com.liu.userservice.entity.UserBaseInfo">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="account_name" jdbcType="VARCHAR" property="accountName"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="signature" jdbcType="VARCHAR" property="signature"/>
+        <result column="birthday" jdbcType="TIME" property="birthday"/>
+        <result column="location" jdbcType="VARCHAR" property="location"/>
+        <result column="university" jdbcType="VARCHAR" property="university"/>
+        <result column="self_introduction" jdbcType="VARCHAR" property="selfIntroduction"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="create_time" jdbcType="TIME" property="create_time"/>
+        <result column="update_time" jdbcType="TIME" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insertUserBaseInfo">
+        insert into user_base_info (user_id,account_name,create_time,update_time) values
+            (#{userBaseInfo.userId},#{userBaseInfo.accountName},#{userBaseInfo.createTime},#{userBaseInfo.updateTime})
+    </insert>
+    
+    <select id="selectUserBaseInfoByUserId" resultType="com.liu.userservice.entity.UserBaseInfo">
+        select * from user_base_info where user_id = #{userId}
+    </select>
+</mapper>

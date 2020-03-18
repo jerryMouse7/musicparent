@@ -1,0 +1,54 @@
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+  application:
+    name: song
+  redis:
+    database: 0
+    host: 49.235.221.50
+    port: 6379
+    password: liubenwei
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 1
+  datasource:
+    url: jdbc:mysql://localhost:3306/music?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: liubenwei01
+server:
+  port: 8083
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    lease-expiration-duration-in-seconds: 100
+    lease-renewal-interval-in-seconds: 100
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://liu:123456@127.0.0.1:8071/eureka
+mybatis:
+  type-aliases-package: com.liu.song
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    com.liu.song: debug
+security:
+  oauth2:
+    client:
+      client-id: account1
+      client-secret: secret
+      authorized-grant-types: password
+      scope: write
+      id: account
+    resource:
+      user-info-uri: http://passport/oauth/info
+      prefer-token-info: false
